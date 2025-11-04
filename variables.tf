@@ -1,3 +1,13 @@
+variable "project_name" {
+  description = "The name of the project"
+  type        = string
+}
+
+variable "environment" {
+  description = "The environment for the resources (e.g., dev, prod)"
+  type        = string
+}
+
 variable "sg_name" {
   description = "The name of the security group"
   type        = string

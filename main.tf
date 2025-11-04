@@ -6,19 +6,20 @@ resource "aws_security_group" "main" {
   # Ingress will be clumzy we need to sperate best practice for ORganizations
   # egress will be defined here: -> generated traffic from instances -> thats is we put completely Open
 
-    egress {
+   egress {
         from_port   = 0
         to_port     = 0
         protocol    = "-1"
         cidr_blocks = ["0.0.0.0/0"]
-    }
+   }
 
-  tags =  merge {
-    var.sg_tags,
-    local.common_tags,
-    {
-      "Name" = "${local.common_name_suffix}-${var.sg_name}"
-    }
-  }
-   
+   tags = merge(
+     var.sg_tags,
+     local.common_tags,
+     {
+       Name = "${local.common_name_suffix}-${var.sg_name}"
+     }
+   )
+  
 }
+  
